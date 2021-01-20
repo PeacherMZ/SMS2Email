@@ -48,7 +48,7 @@ public class SMSObserver extends ContentObserver {
                         Uri.parse("content://sms/inbox"),
                         new String[]{"_id", "address", "body", "date"},
                         where, null, "date desc");
-                final String title = "New Possible Verification Message!";
+                final String title = "New SMS!";
                 String content = "";
                 if (cursor != null) {
                     String body = "";
@@ -58,7 +58,7 @@ public class SMSObserver extends ContentObserver {
                         body = cursor.getString(cursor.getColumnIndex("body"));
                         sender = cursor.getString(cursor.getColumnIndex("address"));
                         date = cursor.getString(cursor.getColumnIndex("date"));
-                        if (body.contains("验证码") || Pattern.matches("[A-Za-z0-9]+", body)) {
+                        if (true) {
                             body = "Message from " + sender + "@" +
                                     new Date(Long.parseLong(date)).toString() + ": <br>" + body;
                             content += body + "<br><br>";
